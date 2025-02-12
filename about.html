@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <img src="image/laptop.jpg" alt="Laptop on desk" class="about-image">
+
+
+</head>
+<body>
+
+    <div class="menu-toggle">☰</div>
+    <div class="custom-cursor"></div>
+      <!-- <div class="accent-line top"></div> -->
+      <div class="accent-line bottom"></div>
+      <div class="accent-line bottom1"></div>
+
+
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="image/logo.png" alt="Logo">
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="about">
+        <h1>About Me</h1>
+        <p class="about-text">A passionate graphic designer with a keen eye for detail and a love for creative storytelling. With experience in Adobe Photoshop, Illustrator, and InDesign, I specialize in crafting visually engaging designs for book cover and interior design, social media post, poster, branding, and print materials. 
+
+            I hold a degree in Information Technology from the Asian College of Technology, where I developed both my technical and creative skills. I also have experience in web design and coding, allowing me to create visually appealing and functional digital experiences. Over the years, I’ve gained hands-on industry experience. 
+            
+            Beyond work, I enjoy character design, traditional and digital drawing, and exploring new design techniques to refine my craft. I’m always eager to learn, grow, and collaborate on exciting projects that bring ideas to life.</p>
+    </section>
+
+    <script>
+        const cursor = document.querySelector('.custom-cursor');
+        const navLinks = document.querySelectorAll('nav ul li a');
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('nav ul');
+    
+        // Glowing cursor movement
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+        });
+    
+        // Highlight Active Page
+        navLinks.forEach(link => {
+            let linkPath = link.href.split("/").pop(); // Get filename from link
+            let currentPath = window.location.pathname.split("/").pop(); // Get current file
+    
+            // Handle index.html or root case
+            if (currentPath === "" || currentPath === "index.html") {
+                currentPath = "index.html";
+            }
+    
+            if (linkPath === currentPath) {
+                link.classList.add("active");
+            }
+        });
+    
+        // Toggle mobile menu
+        menuToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("show");
+        });
+
+            // Smooth transition effect when clicking a link
+  navLinks.forEach(link => {
+        link.addEventListener("click", function (e) {
+            e.preventDefault(); // Prevent instant navigation
+            document.body.classList.add("fade-out"); // Trigger fade-out effect
+            setTimeout(() => {
+                window.location.href = this.href; // Navigate after animation
+            }, 500); // Wait for fade-out before loading next page
+        });
+    });
+
+    </script>
+</body>
+
+<footer>
+    <div class="footer-links">
+        <p>© 2025 Jade Angelo Piñez | Graphic Designer</p>
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/jade-angelo-pi%C3%B1ez-725059256/" target="_blank">
+            <i class="fab fa-linkedin"></i> Jade Angelo Pinez
+        </a>
+        <!-- Email -->
+        <a href="mailto:jadeangelopinez@gmail.com">
+            <i class="fas fa-envelope"></i> jadeangelopinez@gmail.com
+        </a>
+        <!-- Phone -->
+        <a href="tel:+63 9436415828">
+            <i class="fas fa-phone"></i> +63 943 641 5828
+        </a>
+    </div>
+</footer>
+
+</html>

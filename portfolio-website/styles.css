@@ -1,0 +1,525 @@
+/* Portfolio Section */
+.portfolio {
+    text-align: center;
+    padding-top: 140px; /* Push down to avoid navbar overlap */
+}
+
+/* Grid Layout for Designs */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Smaller images */
+    gap: 15px; /* Smaller spacing between images */
+    max-width: 800px; /* Restrict width */
+    margin: auto;
+    padding: 20px;
+}
+
+/* Portfolio Items */
+.portfolio-item img {
+    width: 100%;
+    max-width: 150px; /* Make images smaller */
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item img:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Download Link */
+.portfolio-download {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.portfolio-download a {
+    text-decoration: none;
+    color: #34c0f4;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.portfolio-download a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+
+.resume {
+    padding-top: 200px; /* Push content down to clear the navbar */
+
+}
+
+.resume-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 5%;
+    padding: 20px;
+}
+
+.resume-column {
+    width: 45%;
+    padding: 20px;       /* Adds spacing inside the columns */
+    border-radius: 10px; /* Soft rounded corners */
+    margin: 5px;        /* Space between columns */
+    color: white;        /* Ensures text is readable */
+    position: relative;  /* Needed for absolute positioning of the background */
+    z-index: 1;          /* Ensures text stays above the background */
+
+}
+
+.resume-list {
+    list-style-type: disc;  /* Standard bullet points */
+    padding-left: 15px;     /* Indentation for bullets */
+    line-height: 1.2;
+}
+
+.resume-list li {
+    margin-bottom: 1px;     /* Space between list items */
+}
+
+.resume-download {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.resume-download a {
+    color: #34c0f4;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.software-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.software-skills img {
+    width: 50px;  /* Adjust size as needed */
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.software-skills img:hover {
+    transform: scale(1.1);
+}
+
+.about-text {
+    margin-right: 45%; /* Pushes the text away from the image */
+    line-height: 1.6; /* Improves readability */
+}
+
+.about-image {
+    position: absolute;
+    right: 1%; /* Adjust distance from right */
+    top: 50%; /* Center it vertically */
+    transform: translateY(-50%); /* Align it properly */
+    max-width: 100%; /* Adjust size */
+    opacity: 0.2; /* Make it semi-transparent */
+    mix-blend-mode: lighten; /* Apply blending mode */
+}
+
+/* General Accent Line Style */
+.accent-line {
+    position: absolute;
+    width: 55%;
+    height: 7px; /* Increase thickness */
+    background: #34c0f4;
+    box-shadow: 0 0 px #34c0f4;
+    z-index: 1; /* Below the photo but above the background */
+}
+
+/* Top Line: Lower it to be behind you 
+.accent-line.top {
+    top: 120px; /* Adjust height so it appears behind your head 
+    left: 0;
+}*/
+
+/* Bottom Line: Raise it above the footer */
+.accent-line.bottom {
+    bottom: 100px; /* Adjust height so it doesn't touch the footer */
+    left: 0;
+}
+.accent-line.bottom1 {
+    bottom: 135px; /* Adjust height so it doesn't touch the footer */
+    right: 0;
+}
+
+/* Ensure Photo is Above the Lines
+.photo {
+    position: relative;
+    z-index: 2;  Higher than accent lines 
+}
+*/
+
+
+
+/* Custom Glowing Cursor - Always on Top */
+.custom-cursor {
+    width: 10px;
+    height: 10px;
+    background-color: #34c0f4;
+    border-radius: 50%;
+    position: fixed; /* Ensures it stays in place */
+    pointer-events: none; /* Allows interaction with elements under it */
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px #34c0f4, 0 0 20px #34c0f4;
+    transition: transform 0.08s ease-out;
+    z-index: 999999; /* Highest value to make sure it's on top */
+}
+
+/* Ensure Other Elements Have Lower z-index */
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Lower than cursor */
+}
+
+
+/* Ensure the Photo Doesn't Cover the Cursor */
+.photo-container img {
+    position: relative; /* Ensures it doesn't overlap the cursor */
+    z-index: 1; /* Lower than cursor */
+}
+
+
+
+/* General Styles */
+body {
+    background-color: #171717;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    cursor: none; /* Hide default cursor */
+    overflow-x: hidden;
+    opacity: 0; /* Start with 0 opacity */
+    animation: fadeIn 0.2s ease-in forwards; /* Fade in effect */
+}
+
+/* Fade-out effect when navigating */
+.fade-out {
+    animation: fadeOut 0.2s ease-out forwards;
+}
+
+/* Keyframes for fade-in and fade-out */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* Navigation Bar */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(23, 23, 23, 0.8);
+    padding: 15px 40px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Keeps logo on left, text on right */
+    z-index: 1000;
+}
+
+/* Logo on Left Side */
+.logo {
+    margin-left: 20px; /* Add spacing to the left */
+}
+
+.logo img {
+    height: 40px; /* Adjust logo size */
+    width: auto;
+}
+
+/* Align text to the right with proper spacing */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+    padding-right: 100px; /* Add spacing from right */
+}
+
+/* Navigation items */
+nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+/* Hover and Active Page Effects */
+nav ul li a:hover,
+nav ul li a.active {
+    color: #34c0f4;
+    font-weight: bold;
+}
+
+/* Mobile Navigation */
+.menu-toggle {
+    display: none;
+    font-size: 30px;
+    color: white;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        padding: 10px 20px; /* Adjust spacing */
+    }
+
+    .logo {
+        margin-left: 10px; /* Reduce left spacing for mobile */
+    }
+
+    .logo img {
+        height: 30px; /* Make logo smaller on mobile */
+    }
+
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #222;
+        width: 150px;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    nav ul.show {
+        display: block;
+    }
+
+    nav ul li {
+        display: block;
+        text-align: right;
+        margin: 10px 0; 
+    }
+}
+
+
+/* About Section about*/
+.about {
+    text-align: left;
+    padding: 30px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    height: 80vh;
+}
+
+/* Name without Glow */
+.about h1 {
+    font-size: 75px;
+    color: #34c0f4;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+/* Description */
+.about p {
+    text-align: justify;
+    align-items: left justify;
+    font-size: 20px;
+    color: white;
+}
+
+/* Hero Section index*/
+
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+/* Name without Glow */
+.hero h1 {
+    font-size: 75px;
+    color: #34c0f4;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    
+}
+
+/* Description */
+.hero p {
+    font-size: 20px;
+    color: white;
+}
+
+.hero-image img {
+    max-width: 700px;
+    height: auto;
+    right: 0;
+    z-index: 2; /* Higher than accent lines */
+    position: absolute;
+    bottom: 0;
+}
+
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .hero-image img {
+        position: static;
+        max-width: 70%;
+        margin-top: 20px;
+    }
+
+}
+
+/* portfolio Section about*/
+.portfolio {
+    text-align: left;
+    padding: 30px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    height: 80vh;
+}
+
+/* Name without Glow */
+.portfolio h1 {
+    font-size: 75px;
+    color: #34c0f4;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+/* Description */
+.portfolio p {
+    text-align: justify;
+    align-items: left justify;
+    font-size: 20px;
+    color: white;
+}
+
+/* resume Section about*/
+.resume {
+    text-align: left;
+    padding: 30px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    height: 80vh;
+}
+
+/* Name without Glow */
+.resume h1 {
+    font-size: 75px;
+    color: #34c0f4;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+/* Description */
+.resume p {
+    text-align: justify;
+    align-items: left justify;
+    font-size: 20px;
+    color: white;
+}
+
+footer {
+    background-color: #32393a;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+}
+
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    text-decoration: none; /* Removes underline */
+    color: white; /* Makes text/icons white */
+}
+
+.social-icons a img {
+    width: 30px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 0;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-links a:hover {
+    color: #34c0f4; /* Accent color */
+}
+
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
